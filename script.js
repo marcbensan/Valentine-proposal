@@ -20,8 +20,7 @@ function showMessage(response) {
     noButton.style.top = randomY + "px";
 
     // Update text content and hide the name message
-    document.getElementById("question").textContent =
-      "Choose wisely";
+    document.getElementById("question").textContent = "bruh...";
     document.getElementById("name").style.display = "none";
 
     // Add a mouseover event listener to the "No" button
@@ -36,7 +35,7 @@ function showMessage(response) {
         videoElement.style.top = "40%";
         videoElement.style.left = "50%";
         videoElement.style.transform = "translate(-50%, -50%)";
-        videoElement.style.width = "700px"
+        videoElement.style.width = "700px";
         document.body.appendChild(videoElement);
         // Set the flag to true after playing the video
         videoPlayed = true;
@@ -52,11 +51,12 @@ function showMessage(response) {
       noButton.style.top = randomY + "px";
     });
   }
-
   if (response === "Yes") {
     // Remove the name message and the "No" button
     document.getElementById("name").remove();
     document.getElementById("no-button").remove();
+
+    // Pause and remove the video element if it exists
     const videoElement = document.querySelector("video");
     if (videoElement) {
       videoElement.pause();
@@ -67,18 +67,20 @@ function showMessage(response) {
     const audioElement = document.createElement("audio");
     audioElement.src = "./Minions Cheering.mp4"; // Source of the sound
     audioElement.preload = "auto"; // Preloading the audio
-    audioElement.play() // Play the sound
-      .catch(e => console.error("Audio playback failed:", e)); // Catch and log playback errors
+    audioElement
+      .play() // Play the sound
+      .catch((e) => console.error("Audio playback failed:", e)); // Catch and log playback errors
 
     // Update the text content, display the message, and change the image to "dance.gif"
     const yesMessage = document.getElementById("question");
-    yesMessage.textContent = "See you on the 14th my princess";
+    yesMessage.textContent = "Yippeee! See you on the 14th, Hime-sama.";
     yesMessage.style.display = "block";
+    const yes = document.getElementById("yes-message");
+    yes.style.display = "block";
     yesMessage.style.fontStyle = "normal";
     document.getElementsByClassName("image")[0].src = "images/dance.gif";
 
     // Remove the "Yes" button
     document.getElementById("yesButton").remove();
   }
-
 }
